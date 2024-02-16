@@ -7,6 +7,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import week1.day1.exercise2.Unicorn;
 import week1.day1.exercise3.Student;
+import week1.day2.exercise5.Person;
+import week1.day2.exercise6.Student1;
 
 import java.util.Properties;
 
@@ -58,7 +60,8 @@ public class HibernateConfig {
         // add annotated classes
         configuration.addAnnotatedClass(Unicorn.class);
         configuration.addAnnotatedClass(Student.class);
-
+        configuration.addAnnotatedClass(Person.class);
+        configuration.addAnnotatedClass(Student1.class);
     }
 
     public static EntityManagerFactory getEntityManagerFactoryConfig() {
