@@ -1,4 +1,4 @@
-package week1.day1.exercise2;
+package week3.day1.exercise2;
 
 
 import jakarta.persistence.*;

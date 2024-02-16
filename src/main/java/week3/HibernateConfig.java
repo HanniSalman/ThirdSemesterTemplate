@@ -1,14 +1,14 @@
-package week1;
+package week3;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import week1.day1.exercise2.Unicorn;
-import week1.day1.exercise3.Student;
-import week1.day2.exercise5.Person;
-import week1.day2.exercise6.Student1;
+import week3.day1.exercise2.Unicorn;
+import week3.day1.exercise3.Student;
+import week3.day2.exercise5.Person;
+import week3.day2.exercise6.Student1;
 
 import java.util.Properties;
 

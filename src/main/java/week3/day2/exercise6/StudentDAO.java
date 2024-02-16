@@ -1,4 +1,4 @@
-package week1.day2.exercise6;
+package week3.day2.exercise6;
 
 import java.util.List;
 public interface StudentDAO {

@@ -1,8 +1,8 @@
-package week1.day1.exercise3;
+package week3.day1.exercise3;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import week1.HibernateConfig;
+import week3.HibernateConfig;
 
 import java.util.List;
 
