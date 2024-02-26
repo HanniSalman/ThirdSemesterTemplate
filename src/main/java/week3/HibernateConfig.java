@@ -6,9 +6,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import week3.day1.exercise2.Unicorn;
-import week3.day1.exercise3.Student;
-import week3.day2.exercise5.Person;
-import week3.day2.exercise6.Student1;
+import week4.day1.exercise0.Fee;
+import week4.day1.exercise0.Person;
+import week4.day1.exercise0.PersonDetail;
 
 import java.util.Properties;
 
@@ -44,6 +44,25 @@ public class HibernateConfig {
         }
     }
 
+    private static EntityManagerFactory setupHibernateConfigurationForTesting() {
+        try {
+            Configuration configuration = new Configuration();
+            Properties props = new Properties();
+            props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+            props.put("hibernate.connection.driver_class", "org.testcontainers.jdbc.ContainerDatabaseDriver");
+            props.put("hibernate.connection.url", "jdbc:tc:postgresql:15.3-alpine3.18:///test-db");
+            props.put("hibernate.connection.username", "postgres");
+            props.put("hibernate.connection.password", "postgres");
+            props.put("hibernate.archive.autodetection", "class");
+            props.put("hibernate.show_sql", "true");
+            props.put("hibernate.hbm2ddl.auto", "create-drop");
+            return getEntityManagerFactory(configuration, props);
+        } catch (Throwable ex) {
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
+
     private static EntityManagerFactory getEntityManagerFactory(Configuration configuration, Properties props) {
         configuration.setProperties(props);
 
@@ -58,14 +77,25 @@ public class HibernateConfig {
 
     private static void getAnnotationConfiguration(Configuration configuration) {
         // add annotated classes
-        configuration.addAnnotatedClass(Unicorn.class);
-        configuration.addAnnotatedClass(Student.class);
+        //configuration.addAnnotatedClass(Unicorn.class);
+        //configuration.addAnnotatedClass(Student.class);
+        //configuration.addAnnotatedClass(Person.class);
+        //configuration.addAnnotatedClass(Student1.class);
         configuration.addAnnotatedClass(Person.class);
-        configuration.addAnnotatedClass(Student1.class);
+        configuration.addAnnotatedClass(PersonDetail.class);
+        configuration.addAnnotatedClass(Fee.class);
+
+
+
     }
 
     public static EntityManagerFactory getEntityManagerFactoryConfig() {
         if (entityManagerFactory == null) entityManagerFactory = buildEntityFactoryConfig();
+        return entityManagerFactory;
+    }
+
+    public static EntityManagerFactory getEntityManagerFactoryCongfigTesting() {
+        if (entityManagerFactory == null) entityManagerFactory = setupHibernateConfigurationForTesting();
         return entityManagerFactory;
     }
 }
